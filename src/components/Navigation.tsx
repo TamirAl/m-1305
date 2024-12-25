@@ -13,6 +13,9 @@ const Navigation = () => {
           <Link to="/features" className="text-secondary hover:text-primary transition-colors">
             Features
           </Link>
+          <Link to="/financial-tools" className="text-secondary hover:text-primary transition-colors">
+            Financial Tools
+          </Link>
           <Link to="/pricing" className="text-secondary hover:text-primary transition-colors">
             Pricing
           </Link>
