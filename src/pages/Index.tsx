@@ -1,10 +1,43 @@
-import { ArrowRight, ChevronDown, DollarSign, PiggyBank, Shield, ChartBar } from "lucide-react";
+import { ArrowRight, ChevronDown, DollarSign, PiggyBank, Shield, ChartBar, Tags, Globe, Wallet, FileText } from "lucide-react";
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
+
+  const features = [
+    {
+      icon: <Wallet className="w-8 h-8 text-accent" />,
+      title: "Budgeting & Expense Tracking",
+      description: "Create and manage budgets across multiple categories with detailed transaction tracking and tagging."
+    },
+    {
+      icon: <ChartBar className="w-8 h-8 text-accent" />,
+      title: "Advanced Reporting",
+      description: "Generate comprehensive financial reports with customizable charts and detailed breakdowns."
+    },
+    {
+      icon: <Globe className="w-8 h-8 text-accent" />,
+      title: "Multi-Currency Support",
+      description: "Handle multiple currencies seamlessly with automatic conversion and tracking."
+    }
+  ];
+
+  const detailedFeatures = [
+    {
+      question: "How does the budgeting system work?",
+      answer: "Our budgeting system allows you to create custom categories, set spending limits, and track expenses in real-time. Tag transactions for detailed analysis and get insights into your spending patterns."
+    },
+    {
+      question: "What kind of reports are available?",
+      answer: "Access weekly, monthly, and yearly expense breakdowns, detailed account auditing views, and customizable charts for visualizing your financial data."
+    },
+    {
+      question: "Can I integrate with other financial tools?",
+      answer: "Yes! Our platform offers a comprehensive REST API for seamless integration with other financial tools and systems."
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -15,14 +48,14 @@ const Index = () => {
         <section className="relative overflow-hidden px-6 lg:px-8 py-24 sm:py-32">
           <div className="mx-auto max-w-7xl text-center">
             <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-primary mb-6">
-              Take control of your
+              Smart financial management
               <br />
               <span className="bg-gradient-to-r from-[#9EE755] to-[#CFDD3C] bg-clip-text text-transparent">
-                financial future
+                for your future
               </span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-secondary mb-8">
-              Track your net worth, manage investments, and plan for retirement - all in one secure platform.
+              Track your finances, manage budgets, and plan for retirement with our comprehensive financial management platform.
             </p>
             <div className="flex justify-center gap-4">
               <button className="px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors">
@@ -33,45 +66,22 @@ const Index = () => {
               </button>
             </div>
           </div>
-
-          {/* Hero Image */}
-          <div className="relative mt-16">
-            <div className="flex justify-center">
-              <img
-                src="https://antimetal.com/images/hero/preview.png"
-                alt="Financial Dashboard Preview"
-                className="rounded-3xl shadow-2xl max-w-[90%] w-auto h-auto"
-              />
-            </div>
-          </div>
         </section>
 
-        {/* Features Section */}
+        {/* Features Grid */}
         <section className="py-24 bg-surface px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-bold text-center mb-16">Comprehensive Financial Management</h2>
+            <h2 className="text-3xl font-bold text-center mb-16">Comprehensive Financial Tools</h2>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="p-6 rounded-2xl bg-background border border-border hover:border-accent transition-colors">
-                <div className="mb-4">
-                  <DollarSign className="w-8 h-8 text-accent" />
+              {features.map((feature, index) => (
+                <div key={index} className="p-6 rounded-2xl bg-background border border-border hover:border-accent transition-colors">
+                  <div className="mb-4">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-secondary">{feature.description}</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Net Worth Tracking</h3>
-                <p className="text-secondary">Track all your assets and liabilities in one place with automatic syncing.</p>
-              </div>
-              <div className="p-6 rounded-2xl bg-background border border-border hover:border-accent transition-colors">
-                <div className="mb-4">
-                  <ChartBar className="w-8 h-8 text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Investment Portfolio</h3>
-                <p className="text-secondary">Monitor and analyze your investments with real-time tracking and insights.</p>
-              </div>
-              <div className="p-6 rounded-2xl bg-background border border-border hover:border-accent transition-colors">
-                <div className="mb-4">
-                  <PiggyBank className="w-8 h-8 text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Retirement Planning</h3>
-                <p className="text-secondary">Plan your future with powerful retirement calculators and forecasting tools.</p>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -97,20 +107,7 @@ const Index = () => {
           <div className="mx-auto max-w-3xl">
             <h2 className="text-3xl font-bold text-center mb-16">Frequently Asked Questions</h2>
             <div className="space-y-4">
-              {[
-                {
-                  question: "How secure is my financial data?",
-                  answer: "We use bank-level encryption and security measures to protect your sensitive financial information.",
-                },
-                {
-                  question: "Can I connect all my financial accounts?",
-                  answer: "Yes, Maybe supports connections with thousands of financial institutions for automatic account syncing.",
-                },
-                {
-                  question: "How do I get started?",
-                  answer: "Simply create an account and follow our guided setup process to connect your accounts and start tracking your finances.",
-                },
-              ].map((faq, index) => (
+              {detailedFeatures.map((faq, index) => (
                 <div
                   key={index}
                   className="border border-border rounded-lg overflow-hidden"
@@ -142,7 +139,7 @@ const Index = () => {
           <div className="mx-auto max-w-7xl text-center">
             <h2 className="text-3xl sm:text-5xl font-bold mb-8">Ready to take control?</h2>
             <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-              Join thousands of users who are already managing their wealth with Maybe.
+              Join thousands of users who are already managing their wealth with our platform.
             </p>
             <button className="px-8 py-4 bg-accent text-primary rounded-full font-semibold hover:bg-accent/90 transition-colors">
               Create Free Account
