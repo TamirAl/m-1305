@@ -19,9 +19,10 @@ export default {
     },
     extend: {
       colors: {
-        primary: "#141413",
-        secondary: "#828179",
-        accent: "#C7FB76",
+        primary: "#000033",
+        secondary: "#ADD8E6",
+        accent: "#00BFFF",
+        white: "#FFFFFF",
         background: "#FAFAF8",
         surface: "#fff",
         muted: "#C4C3BB",
@@ -34,7 +35,9 @@ export default {
         foreground: "hsl(var(--foreground))",
       },
       fontFamily: {
-        sans: ["SF Pro Display", "system-ui", "sans-serif"],
+        sans: ["Roboto", "Helvetica Neue", "system-ui", "sans-serif"],
+        heading: ["Roboto", "sans-serif"],
+        body: ["Open Sans", "Lato", "sans-serif"],
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -50,6 +53,13 @@ export default {
       backdropBlur: {
         xs: "2px",
       },
+      screens: {
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
