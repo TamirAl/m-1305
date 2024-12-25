@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
@@ -16,6 +17,9 @@ const SavingsGoal: React.FC<{ name: string; current: number; target: number }> =
 );
 
 const SavingsGoals: React.FC = () => {
+  const location = useLocation();
+  console.log('Current location:', location.pathname); // Debug line to verify routing
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Savings Goals</h1>

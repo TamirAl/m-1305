@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -19,6 +20,9 @@ const BillItem: React.FC<{ name: string; amount: number; dueDate: string }> = ({
 );
 
 const BillManagement: React.FC = () => {
+  const location = useLocation();
+  console.log('Current location:', location.pathname); // Debug line to verify routing
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Bill Management</h1>

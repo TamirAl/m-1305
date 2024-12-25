@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
+import { useLocation } from 'react-router-dom';
 
 const BudgetCategory: React.FC<{ category: string; spent: number; limit: number }> = ({ category, spent, limit }) => (
   <Card className="mb-4">
@@ -16,6 +17,9 @@ const BudgetCategory: React.FC<{ category: string; spent: number; limit: number 
 );
 
 const SmartBudgeting: React.FC = () => {
+  const location = useLocation();
+  console.log('Current location:', location.pathname); // Debug line to verify routing
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Smart Budgeting</h1>

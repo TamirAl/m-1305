@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -15,6 +16,9 @@ const AccountCard: React.FC<{ name: string; balance: number; type: string }> = (
 );
 
 const MultiAccountSupport: React.FC = () => {
+  const location = useLocation();
+  console.log('Current location:', location.pathname); // Debug line to verify routing
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Multi-Account Support</h1>
