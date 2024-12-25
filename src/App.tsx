@@ -1,30 +1,34 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import Features from "./pages/Features";
-import FinancialTools from "./pages/FinancialTools";
-import About from "./pages/About";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Features from '@/pages/Features';
+import FeaturesLayout from '@/components/layouts/FeaturesLayout';
+import SmartBudgeting from '@/pages/SmartBudgeting';
+import Analytics from '@/pages/Analytics';
+import Savings from '@/pages/Savings';
+import BillManagement from '@/pages/BillManagement';
+import MultiAccountSupport from '@/pages/MultiAccountSupport';
+import FinancialPlanningTools from '@/pages/FinancialPlanningTools';
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/features" element={<Features />} />
-          <Route path="/financial-tools" element={<FinancialTools />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* Other routes */}
+        
+        {/* Features routes */}
+        <Route path="/features" element={<FeaturesLayout />}>
+          <Route index element={<Features />} />
+          <Route path="smart-budgeting" element={<SmartBudgeting />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="savings" element={<Savings />} />
+          <Route path="bill-management" element={<BillManagement />} />
+          <Route path="multi-account" element={<MultiAccountSupport />} />
+          <Route path="planning-tools" element={<FinancialPlanningTools />} />
+          {/* Redirect /features to first feature by default */}
+          <Route path="" element={<Navigate to="smart-budgeting" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 export default App;
