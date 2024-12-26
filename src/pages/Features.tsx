@@ -4,41 +4,50 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const Features = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [features] = useState([
     {
+      id: "budgeting",
       icon: <DollarSign className="w-8 h-8 text-accent" />,
       title: "Smart Budgeting",
       description: "Create and manage budgets across multiple categories with real-time tracking and insights."
     },
     {
+      id: "analytics",
       icon: <ChartBar className="w-8 h-8 text-accent" />,
       title: "Advanced Analytics",
       description: "Visualize your financial data with interactive charts and comprehensive reporting tools."
     },
     {
+      id: "savings",
       icon: <PiggyBank className="w-8 h-8 text-accent" />,
       title: "Savings Goals",
       description: "Set and track savings goals with automated progress monitoring and milestone alerts."
     },
     {
+      id: "bills",
       icon: <CreditCard className="w-8 h-8 text-accent" />,
       title: "Bill Management",
       description: "Never miss a payment with automated bill tracking and payment reminders."
     },
     {
+      id: "accounts",
       icon: <Wallet className="w-8 h-8 text-accent" />,
       title: "Multi-Account Support",
-      description: "Manage all your accounts in one place with automatic synchronization and balance tracking."
+      description: "Manage all accounts in one place with automatic synchronization and balance tracking."
     },
     {
+      id: "planning",
       icon: <Calculator className="w-8 h-8 text-accent" />,
       title: "Financial Planning Tools",
       description: "Access retirement calculators, loan analyzers, and investment planning tools."
     },
     {
+      id: "security",
       icon: <Database className="w-8 h-8 text-accent" />,
       title: "Secure Data Storage",
       description: "Your financial data is protected with bank-level encryption and security measures."
@@ -51,6 +60,20 @@ const Features = () => {
       description: "This feature is currently under development.",
     });
   };
+
+  const scrollToFeature = () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  React.useEffect(() => {
+    scrollToFeature();
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -66,16 +89,24 @@ const Features = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
+            {features.map((feature) => (
               <div 
-                key={index}
+                key={feature.id}
+                id={feature.id}
                 className="bg-surface p-8 rounded-lg shadow-sm border border-border hover:border-accent transition-colors"
               >
                 <div className="mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-secondary">{feature.description}</p>
+                <p className="text-secondary mb-4">{feature.description}</p>
+                <Button 
+                  onClick={() => navigate(`/features#${feature.id}`)}
+                  variant="outline"
+                  className="w-full"
+                >
+                  Learn More
+                </Button>
               </div>
             ))}
           </div>

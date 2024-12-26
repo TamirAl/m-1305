@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -21,7 +21,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground cursor-pointer",
             className
           )}
           {...props}
@@ -38,6 +38,12 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem";
 
 const Navigation = () => {
+  const navigate = useNavigate();
+
+  const handleFeatureClick = (featureId: string) => {
+    navigate(`/features#${featureId}`);
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -52,22 +58,40 @@ const Navigation = () => {
                 <NavigationMenuTrigger>Features</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    <ListItem href="/features#budgeting" title="Smart Budgeting">
+                    <ListItem 
+                      onClick={() => handleFeatureClick('budgeting')} 
+                      title="Smart Budgeting"
+                    >
                       Create and manage budgets with real-time tracking
                     </ListItem>
-                    <ListItem href="/features#analytics" title="Advanced Analytics">
+                    <ListItem 
+                      onClick={() => handleFeatureClick('analytics')} 
+                      title="Advanced Analytics"
+                    >
                       Interactive charts and comprehensive reporting
                     </ListItem>
-                    <ListItem href="/features#savings" title="Savings Goals">
+                    <ListItem 
+                      onClick={() => handleFeatureClick('savings')} 
+                      title="Savings Goals"
+                    >
                       Set and track savings goals with automated monitoring
                     </ListItem>
-                    <ListItem href="/features#bills" title="Bill Management">
+                    <ListItem 
+                      onClick={() => handleFeatureClick('bills')} 
+                      title="Bill Management"
+                    >
                       Automated bill tracking and payment reminders
                     </ListItem>
-                    <ListItem href="/features#accounts" title="Multi-Account Support">
+                    <ListItem 
+                      onClick={() => handleFeatureClick('accounts')} 
+                      title="Multi-Account Support"
+                    >
                       Manage all accounts in one place
                     </ListItem>
-                    <ListItem href="/features#planning" title="Financial Planning">
+                    <ListItem 
+                      onClick={() => handleFeatureClick('planning')} 
+                      title="Financial Planning"
+                    >
                       Access retirement calculators and loan analyzers
                     </ListItem>
                   </ul>
