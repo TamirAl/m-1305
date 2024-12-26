@@ -14,43 +14,50 @@ const Features = () => {
       id: "budgeting",
       icon: <DollarSign className="w-8 h-8 text-accent" />,
       title: "Smart Budgeting",
-      description: "Create and manage budgets across multiple categories with real-time tracking and insights."
+      description: "Create and manage budgets across multiple categories with real-time tracking and insights.",
+      path: "/smart-budgeting"
     },
     {
       id: "analytics",
       icon: <ChartBar className="w-8 h-8 text-accent" />,
       title: "Advanced Analytics",
-      description: "Visualize your financial data with interactive charts and comprehensive reporting tools."
+      description: "Visualize your financial data with interactive charts and comprehensive reporting tools.",
+      path: "/analytics"
     },
     {
       id: "savings",
       icon: <PiggyBank className="w-8 h-8 text-accent" />,
       title: "Savings Goals",
-      description: "Set and track savings goals with automated progress monitoring and milestone alerts."
+      description: "Set and track savings goals with automated progress monitoring and milestone alerts.",
+      path: "/savings"
     },
     {
       id: "bills",
       icon: <CreditCard className="w-8 h-8 text-accent" />,
       title: "Bill Management",
-      description: "Never miss a payment with automated bill tracking and payment reminders."
+      description: "Never miss a payment with automated bill tracking and payment reminders.",
+      path: "/bill-management"
     },
     {
       id: "accounts",
       icon: <Wallet className="w-8 h-8 text-accent" />,
       title: "Multi-Account Support",
-      description: "Manage all accounts in one place with automatic synchronization and balance tracking."
+      description: "Manage all accounts in one place with automatic synchronization and balance tracking.",
+      path: "/multi-account-support"
     },
     {
       id: "planning",
       icon: <Calculator className="w-8 h-8 text-accent" />,
       title: "Financial Planning Tools",
-      description: "Access retirement calculators, loan analyzers, and investment planning tools."
+      description: "Access retirement calculators, loan analyzers, and investment planning tools.",
+      path: "/financial-planning"
     },
     {
       id: "security",
       icon: <Database className="w-8 h-8 text-accent" />,
       title: "Secure Data Storage",
-      description: "Your financial data is protected with bank-level encryption and security measures."
+      description: "Your financial data is protected with bank-level encryption and security measures.",
+      path: "/security"
     }
   ]);
 
@@ -101,7 +108,7 @@ const Features = () => {
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                 <p className="text-secondary mb-4">{feature.description}</p>
                 <Button 
-                  onClick={() => navigate(`/features#${feature.id}`)}
+                  onClick={() => navigate(feature.path)}
                   variant="outline"
                   className="w-full"
                 >
