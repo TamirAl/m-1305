@@ -1,7 +1,10 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calculator, DollarSign, Home, PiggyBank, LineChart, BarChart, Wallet, TrendingUp, Building, Percent, DollarSign as Currency } from "lucide-react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Calculator, DollarSign, LineChart, Home, PiggyBank, TrendingUp, Building, BarChart, Wallet, Percent, Currency } from "lucide-react";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const tools = [
   {
@@ -90,16 +93,14 @@ const tools = [
   }
 ];
 
-const categories = ["All", "Investing", "Retirement", "Savings", "Debt", "Other"];
-
 export default function FinancialTools() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       <main className="container mx-auto px-4 py-24">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Try our free financial tools and calculators</h1>
-          <p className="text-lg text-muted-foreground">
+          <h1 className="text-4xl font-bold mb-4 text-primary">Financial Tools & Calculators</h1>
+          <p className="text-lg text-primary">
             All the interactive tools and calculators you need to visualize and navigate your financial journey.
           </p>
         </div>
@@ -111,18 +112,25 @@ export default function FinancialTools() {
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <tool.icon className="h-6 w-6 text-primary" />
-                    <span className="text-sm font-medium text-muted-foreground">
+                    <span className="text-sm font-medium text-primary">
                       {tool.category}
                     </span>
                   </div>
-                  <CardTitle className="mt-4">{tool.title}</CardTitle>
-                  <CardDescription>{tool.description}</CardDescription>
+                  <CardTitle className="mt-4 text-primary">{tool.title}</CardTitle>
+                  <CardDescription className="text-primary">{tool.description}</CardDescription>
+                  <Button 
+                    variant="outline" 
+                    className="w-full mt-4 text-primary border-primary hover:bg-primary hover:text-white"
+                  >
+                    Learn More
+                  </Button>
                 </CardHeader>
               </Card>
             </Link>
           ))}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
