@@ -2,55 +2,56 @@ import React, { useState, useEffect } from "react";
 import { Plus, DollarSign, ChartBar, PiggyBank, CreditCard, Wallet, Calculator, Database } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
 const Features = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const location = useLocation();
   const [features] = useState([
     {
       id: "budgeting",
       icon: <DollarSign className="w-8 h-8 text-accent" />,
       title: "Smart Budgeting",
       description: "Create and manage budgets across multiple categories with real-time tracking and insights.",
-      path: "/smart-budgeting"
+      path: "/features/smart-budgeting"
     },
     {
       id: "analytics",
       icon: <ChartBar className="w-8 h-8 text-accent" />,
       title: "Advanced Analytics",
       description: "Visualize your financial data with interactive charts and comprehensive reporting tools.",
-      path: "/analytics"
+      path: "/features/analytics"
     },
     {
       id: "savings",
       icon: <PiggyBank className="w-8 h-8 text-accent" />,
       title: "Savings Goals",
       description: "Set and track savings goals with automated progress monitoring and milestone alerts.",
-      path: "/savings"
+      path: "/features/savings"
     },
     {
       id: "bills",
       icon: <CreditCard className="w-8 h-8 text-accent" />,
       title: "Bill Management",
       description: "Never miss a payment with automated bill tracking and payment reminders.",
-      path: "/bill-management"
+      path: "/features/bill-management"
     },
     {
       id: "accounts",
       icon: <Wallet className="w-8 h-8 text-accent" />,
       title: "Multi-Account Support",
       description: "Manage all accounts in one place with automatic synchronization and balance tracking.",
-      path: "/multi-account-support"
+      path: "/features/multi-account"
     },
     {
       id: "planning",
       icon: <Calculator className="w-8 h-8 text-accent" />,
       title: "Financial Planning Tools",
       description: "Access retirement calculators, loan analyzers, and investment planning tools.",
-      path: "/financial-planning"
+      path: "/features/planning-tools"
     },
     {
       id: "security",
@@ -80,7 +81,7 @@ const Features = () => {
 
   useEffect(() => {
     scrollToFeature();
-  }, []);
+  }, [location]);
 
   return (
     <div className="min-h-screen flex flex-col">
